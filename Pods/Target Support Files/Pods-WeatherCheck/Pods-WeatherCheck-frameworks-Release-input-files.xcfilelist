@@ -1,0 +1,3 @@
+${PODS_ROOT}/Target Support Files/Pods-WeatherCheck/Pods-WeatherCheck-frameworks.sh
+${BUILT_PRODUCTS_DIR}/Alamofire/Alamofire.framework
+${BUILT_PRODUCTS_DIR}/AlamofireNetworkActivityIndicator/AlamofireNetworkActivityIndicator.framework
