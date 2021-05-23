@@ -18,6 +18,7 @@
 		CD622B0C26583EB100EB74ED /* WeatherCheckUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD622B0B26583EB100EB74ED /* WeatherCheckUITests.swift */; };
 		CD622B1A265844B100EB74ED /* NetworkServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD622B19265844B100EB74ED /* NetworkServices.swift */; };
 		CD622B1C265850A400EB74ED /* WeatherSearchVC.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD622B1B265850A400EB74ED /* WeatherSearchVC.swift */; };
+		CD622B1E265AB8B600EB74ED /* CurrentWeather.swift in Sources */ = {isa = PBXBuildFile; fileRef = CD622B1D265AB8B600EB74ED /* CurrentWeather.swift */; };
 		DA8E249CBA78441D1B76B8BD /* Pods_WeatherCheck.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E6D0BE12E900439892DFF87E /* Pods_WeatherCheck.framework */; };
 /* End PBXBuildFile section */
 
@@ -59,6 +60,7 @@
 		CD622B0D26583EB100EB74ED /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		CD622B19265844B100EB74ED /* NetworkServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkServices.swift; sourceTree = "<group>"; };
 		CD622B1B265850A400EB74ED /* WeatherSearchVC.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeatherSearchVC.swift; sourceTree = "<group>"; };
+		CD622B1D265AB8B600EB74ED /* CurrentWeather.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentWeather.swift; sourceTree = "<group>"; };
 		D6241B39C57862C28F59589F /* Pods_WeatherCheckTests.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_WeatherCheckTests.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		D63EB672B340EA4757BA40EE /* Pods-WeatherCheck.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCheck.debug.xcconfig"; path = "Target Support Files/Pods-WeatherCheck/Pods-WeatherCheck.debug.xcconfig"; sourceTree = "<group>"; };
 		DF876F29B82E01496E259AE8 /* Pods-WeatherCheck-WeatherCheckUITests.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-WeatherCheck-WeatherCheckUITests.debug.xcconfig"; path = "Target Support Files/Pods-WeatherCheck-WeatherCheckUITests/Pods-WeatherCheck-WeatherCheckUITests.debug.xcconfig"; sourceTree = "<group>"; };
@@ -143,6 +145,7 @@
 			children = (
 				CD622AE926583EAD00EB74ED /* AppDelegate.swift */,
 				CD622B19265844B100EB74ED /* NetworkServices.swift */,
+				CD622B1D265AB8B600EB74ED /* CurrentWeather.swift */,
 				CD622AEB26583EAD00EB74ED /* SceneDelegate.swift */,
 				CD622B1B265850A400EB74ED /* WeatherSearchVC.swift */,
 				CD622AEF26583EAD00EB74ED /* Main.storyboard */,
@@ -410,6 +413,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				CD622AEA26583EAD00EB74ED /* AppDelegate.swift in Sources */,
+				CD622B1E265AB8B600EB74ED /* CurrentWeather.swift in Sources */,
 				CD622B1A265844B100EB74ED /* NetworkServices.swift in Sources */,
 				CD622AEC26583EAD00EB74ED /* SceneDelegate.swift in Sources */,
 				CD622B1C265850A400EB74ED /* WeatherSearchVC.swift in Sources */,

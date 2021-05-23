@@ -7,37 +7,83 @@
 
 import Foundation
 import Alamofire
+import SwiftyJSON
 
 class NetworkServices: NSObject {
 	
 	let baseUrl = "https://api.openweathermap.org/data/2.5/weather?"
 	let apiKey = "96acaea82fce2fc52de8ed4d2ded4437"
 	
-	var callType = ""
-	var onComplete: ((_ result: AnyObject, _ callType: String)->())?
-	var onError: ((_ error: AnyObject, _ callType: String)->())?
+	var onComplete: ((_ result: AnyObject)->())?
+	var onError: ((_ error: String)->())?
 	
-	func get(callType: String, getURL: String) {
+	func get(getURL: String) {
 		AF.request(getURL).responseJSON { response in
-			print(response)
+			if response.error == nil {
+				if let value = response.value as? NSDictionary {
+					let jsonData = JSON(value)
+					print(jsonData)
+					
+					if jsonData["cod"] != "404" {
+						let weatherItem = CurrentWeather(weatherData: jsonData)
+						self.onComplete?(weatherItem)
+					}
+					else {
+						let errorMessage = jsonData["message"].stringValue.capitalized
+						self.onError?(errorMessage)
+					}
+				}
+			}
+			else {
+				if let error = response.error {
+					print(error)
+					if let errorString = error.errorDescription {
+						self.onError?(errorString)
+					}
+				}
+			}
 		}
 	}
 	
-	func getFromString(city: String) {
-		self.callType = "getFromString"
+	func getFromSearch(search: String) {
 		
-		let getURL = "\(baseUrl)q=\(city)&appid=\(apiKey)"
+		var getURL = "\(baseUrl)appid=\(apiKey)&units=imperial&"
 		
-		print(getURL)
-		
-		self.get(callType: self.callType, getURL: getURL)
-	}
-	
-	func getFromZip(zip: String) {
-		self.callType = "getFromZip"
+		// Check if search value is zip code or string
+		if CharacterSet.decimalDigits.isSuperset(of: CharacterSet(charactersIn: search)) {
+			// Search string contains only numbers
+			if search.count == 5 {
+				// Check if zip code serach is correct length
+				getURL = getURL + "zip=\(search)"
+				
+				print(getURL)
+				
+				self.get(getURL: getURL)
+			}
+			else {
+				let errorMessage = "Please use a valid 5-digit zip code."
+				self.onError?(errorMessage)
+			}
+		}
+		else {
+			// Note: for furture improvement, it would be good to include the list of city codes allowed by the OpenWeather API to ensure more accurate results when searching by City
+			
+			// Search string contains text
+			if let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
+				getURL = getURL + "q=\(encodedSearch)"
+				
+				print(getURL)
+				
+				self.get(getURL: getURL)
+			}
+		}
 	}
 	
 	func getFromGeo(lat: String, lon: String) {
-		self.callType = "getFromGeo"
+		//let getURL = "\(baseUrl)q=\(city)&appid=\(apiKey)"
+		
+		//print(getURL)
+		
+		//self.get(getURL: getURL)
 	}
 }

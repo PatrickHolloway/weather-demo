@@ -9,6 +9,7 @@ target 'WeatherCheck' do
 
   pod 'Alamofire', '~> 5.2'
   pod 'AlamofireNetworkActivityIndicator', '~> 3.1'
+  pod 'SwiftyJSON', '~> 4.0'
 
   target 'WeatherCheckTests' do
     inherit! :search_paths
