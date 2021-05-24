@@ -144,10 +144,10 @@
 			isa = PBXGroup;
 			children = (
 				CD622AE926583EAD00EB74ED /* AppDelegate.swift */,
-				CD622B19265844B100EB74ED /* NetworkServices.swift */,
-				CD622B1D265AB8B600EB74ED /* CurrentWeather.swift */,
 				CD622AEB26583EAD00EB74ED /* SceneDelegate.swift */,
 				CD622B1B265850A400EB74ED /* WeatherSearchVC.swift */,
+				CD622B19265844B100EB74ED /* NetworkServices.swift */,
+				CD622B1D265AB8B600EB74ED /* CurrentWeather.swift */,
 				CD622AEF26583EAD00EB74ED /* Main.storyboard */,
 				CD622AF226583EB000EB74ED /* Assets.xcassets */,
 				CD622AF426583EB000EB74ED /* LaunchScreen.storyboard */,
