@@ -16,9 +16,7 @@ class CurrentWeather: NSObject {
 	var feelsLike: Int = 0
 	var weatherDesc: String = ""
 	var fetchTime: String = ""
-	
-	// Add data/time last fetched?
-	
+		
 	override init() {
 		super.init()
 	}

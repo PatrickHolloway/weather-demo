@@ -62,5 +62,7 @@
 	</array>
 	<key>NSLocationWhenInUseUsageDescription</key>
 	<string>This app uses your location to find the current temperature and weather.</string>
+	<key>UIUserInterfaceStyle</key>
+	<string>Light</string>
 </dict>
 </plist>

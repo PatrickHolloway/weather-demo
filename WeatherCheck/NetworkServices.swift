@@ -18,12 +18,14 @@ class NetworkServices: NSObject {
 	var onError: ((_ error: String)->())?
 	
 	func get(getURL: String) {
+		// Make the Get request using AlamoFire
 		AF.request(getURL).responseJSON { response in
 			if response.error == nil {
 				if let value = response.value as? NSDictionary {
+					// Convert returned JSON dictionary values to parsed JSON data using SwiftyJSON lib.
 					let jsonData = JSON(value)
-					print(jsonData)
 					
+					// Check for a "404" error from the API, and return an error message for display
 					if jsonData["cod"] != "404" {
 						let weatherItem = CurrentWeather(weatherData: jsonData)
 						self.onComplete?(weatherItem)
@@ -35,6 +37,7 @@ class NetworkServices: NSObject {
 				}
 			}
 			else {
+				// Return error description if there is an issue with the network call
 				if let error = response.error {
 					print(error)
 					if let errorString = error.errorDescription {
@@ -55,9 +58,7 @@ class NetworkServices: NSObject {
 			if search.count == 5 {
 				// Check if zip code serach is correct length
 				getURL = getURL + "zip=\(search)"
-				
-				print(getURL)
-				
+							
 				self.get(getURL: getURL)
 			}
 			else {
@@ -71,9 +72,7 @@ class NetworkServices: NSObject {
 			// Search string contains text
 			if let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
 				getURL = getURL + "q=\(encodedSearch)"
-				
-				print(getURL)
-				
+								
 				self.get(getURL: getURL)
 			}
 		}
@@ -81,9 +80,7 @@ class NetworkServices: NSObject {
 	
 	func getFromGeo(lat: String, lon: String) {
 		let getURL = "\(baseUrl)appid=\(apiKey)&units=imperial&&lat=\(lat)&lon=\(lon)"
-		
-		print(getURL)
-		
+
 		self.get(getURL: getURL)
 	}
 }

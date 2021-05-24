@@ -38,7 +38,7 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 			
 		}
 		networkServices.onError = { error in
-			// Show alert view
+			// Show alert view with error message
 			let alert = UIAlertController(title: error, message: "", preferredStyle: .alert)
 			alert.addAction(UIAlertAction(title: "OK", style: .default, handler:
 											{ action in
@@ -60,6 +60,7 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 	}
 	
 	func updateWeather(weather: CurrentWeather) {
+		// Set text values for weather display labels
 		self.cityLabel.text = "City: \(weather.locationName)"
 		self.tempLabel.text = "Current Temperature: \(weather.temperature)°"
 		self.humidityLabel.text = "Humidity: \(weather.humidity)%"
@@ -111,6 +112,7 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 	}
 
 	@IBAction func UseLocation(_ sender: Any) {
+		// Note: May need to manually start/stop an ActivityIndicator or other loading indicator since requestLocation and the subsequent API call can feel unresponsive to the user after tapping the "Use Current Location" button.
 		switch self.locationManager.authorizationStatus {
 			case .authorizedAlways, .authorizedWhenInUse:
 				if self.searchBar.text != "" {
@@ -119,7 +121,7 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 				self.locationManager.requestLocation()
 				break
 			case .denied, .restricted:
-				// Show alert view
+				// Show alert view with instructions on how to enable location usage
 				let alert = UIAlertController(title: "To find weather using your current location, please enable location usage in:\n Settings > Privacy > Location Services > WeatherCheck", message: "", preferredStyle: .alert)
 				alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
 				self.present(alert, animated: true)

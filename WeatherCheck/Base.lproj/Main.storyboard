@@ -37,6 +37,7 @@
                                 <constraints>
                                     <constraint firstAttribute="height" constant="30" id="Ggb-VF-bwh"/>
                                 </constraints>
+                                <fontDescription key="fontDescription" type="system" weight="semibold" pointSize="17"/>
                                 <state key="normal" title="Use Current Location"/>
                                 <connections>
                                     <action selector="UseLocation:" destination="4T9-Ww-Kj0" eventType="touchUpInside" id="o5z-ga-qaQ"/>
@@ -127,9 +128,8 @@
                                 </connections>
                             </searchBar>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="or" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="zFE-zy-RJo">
-                                <rect key="frame" x="191.5" y="142" width="31" height="24"/>
+                                <rect key="frame" x="199" y="142" width="16" height="24"/>
                                 <constraints>
-                                    <constraint firstAttribute="width" constant="31" id="tUM-aa-wqh"/>
                                     <constraint firstAttribute="height" constant="24" id="yL9-La-hy2"/>
                                 </constraints>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
