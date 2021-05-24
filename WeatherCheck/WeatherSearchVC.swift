@@ -20,9 +20,10 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 	@IBOutlet weak var descLabel: UILabel!
 	@IBOutlet weak var updatedLabel: UILabel!
 	
-	
 	let networkServices = NetworkServices()
 	let locationManager = CLLocationManager()
+	
+	let unit = (celcius: "C", fahrenheit: "F")
 
 	override func viewDidLoad() {
 		super.viewDidLoad()
@@ -61,10 +62,11 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 	
 	func updateWeather(weather: CurrentWeather) {
 		// Set text values for weather display labels
+		// Note: For future development, it would be good to have an option to specify what temperature units to display (and retrieve from the API), especially for non-US locations.
 		self.cityLabel.text = "City: \(weather.locationName)"
-		self.tempLabel.text = "Current Temperature: \(weather.temperature)°"
+		self.tempLabel.text = "Current Temperature: \(weather.temperature)°\(unit.fahrenheit)"
 		self.humidityLabel.text = "Humidity: \(weather.humidity)%"
-		self.feelsLikeLabel.text = "Feels Like: \(weather.feelsLike)°"
+		self.feelsLikeLabel.text = "Feels Like: \(weather.feelsLike)°\(unit.fahrenheit)"
 		self.descLabel.text = "Weather Details: \(weather.weatherDesc)"
 		self.updatedLabel.text = "Updated: \(weather.fetchTime)"
 	}

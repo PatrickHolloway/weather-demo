@@ -67,7 +67,7 @@ class NetworkServices: NSObject {
 			}
 		}
 		else {
-			// Note: for furture improvement, it would be good to include the list of city codes allowed by the OpenWeather API to ensure more accurate results when searching by City
+			// Note: for furture improvement, import and utilize the list of city codes provided by the OpenWeather API to ensure more accurate results when searching by City (or for a local searchable list or autocomplete). Since the API does not support state abbreviations, converting those to full state names when searching would also be a good improvement.
 			
 			// Search string contains text
 			if let encodedSearch = search.addingPercentEncoding(withAllowedCharacters: .urlQueryAllowed) {
