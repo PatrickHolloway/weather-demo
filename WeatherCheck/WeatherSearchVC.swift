@@ -93,15 +93,47 @@ class WeatherSearchVC: UIViewController, UISearchBarDelegate, CLLocationManagerD
 	
 	// CLLocationManager Delegate Methods
 	func locationManager(_ manager: CLLocationManager, didUpdateLocations locations: [CLLocation]) {
-		
+		if let location = locations.first {
+			let latitude = location.coordinate.latitude
+			let longitude = location.coordinate.longitude
+			
+			// Fetch weather for coordinates
+			networkServices.getFromGeo(lat: "\(latitude)", lon: "\(longitude)")
+			self.locationManager.stopUpdatingLocation()
+		}
 	}
 	
 	func locationManager(_ manager: CLLocationManager, didFailWithError error: Error) {
-		
+		// Check error type...
+		//let alert = UIAlertController(title: "Failed to get device location", message: "", preferredStyle: .alert)
+		//alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+		//self.present(alert, animated: true)
 	}
 
 	@IBAction func UseLocation(_ sender: Any) {
-		
+		switch self.locationManager.authorizationStatus {
+			case .authorizedAlways, .authorizedWhenInUse:
+				if self.searchBar.text != "" {
+					self.searchBar.text = ""
+				}
+				self.locationManager.requestLocation()
+				break
+			case .denied, .restricted:
+				// Show alert view
+				let alert = UIAlertController(title: "To find weather using your current location, please enable location usage in:\n Settings > Privacy > Location Services > WeatherCheck", message: "", preferredStyle: .alert)
+				alert.addAction(UIAlertAction(title: "OK", style: .default, handler: nil))
+				self.present(alert, animated: true)
+				break
+			case .notDetermined:
+				self.locationManager.requestWhenInUseAuthorization()
+				if self.searchBar.text != "" {
+					self.searchBar.text = ""
+				}
+				self.locationManager.requestLocation()
+				break
+			default:
+				break
+		}
 	}
 	
 }

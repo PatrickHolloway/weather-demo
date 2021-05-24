@@ -80,10 +80,10 @@ class NetworkServices: NSObject {
 	}
 	
 	func getFromGeo(lat: String, lon: String) {
-		//let getURL = "\(baseUrl)q=\(city)&appid=\(apiKey)"
+		let getURL = "\(baseUrl)appid=\(apiKey)&units=imperial&&lat=\(lat)&lon=\(lon)"
 		
-		//print(getURL)
+		print(getURL)
 		
-		//self.get(getURL: getURL)
+		self.get(getURL: getURL)
 	}
 }
